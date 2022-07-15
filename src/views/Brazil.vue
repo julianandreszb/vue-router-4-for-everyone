@@ -1,6 +1,6 @@
 <template>
-  <div class="home" >
-    <h1>This is the About component</h1>
+  <div class="brazil" >
+    <h1>This is the Brazil component</h1>
   </div>
 </template>
 
