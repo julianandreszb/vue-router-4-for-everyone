@@ -3,7 +3,6 @@ import sourceData from "./../data.json";
 
 import {reactive} from "vue";
 const destinations  = reactive(sourceData.destinations);
-console.log(destinations);
 
 </script>
 
