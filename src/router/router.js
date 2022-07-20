@@ -8,13 +8,21 @@ const routes = [
         name: "destination.show" ,
         component: () => import("./../views/DestinationShow.vue"),
         props: true,
+        children : [
+            {
+                path: ":experienceSlug",
+                name: "experience.show" ,
+                component: () => import("./../views/ExperienceShow.vue"),
+                props: true,
+            }
+        ]
     },
-    {
-        path: "/destination/:slug/:experienceSlug",
-        name: "experience.show" ,
-        component: () => import("./../views/ExperienceShow.vue"),
-        props: true,
-    },
+    // {
+    //     path: "/destination/:slug/:experienceSlug",
+    //     name: "experience.show" ,
+    //     component: () => import("./../views/ExperienceShow.vue"),
+    //     props: true,
+    // }
 ];
 const router = createRouter({
     history: createWebHistory(),

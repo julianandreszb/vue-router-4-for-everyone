@@ -36,6 +36,7 @@ onMounted(async () => {
         </router-link>
       </div>
     </section>
+    <router-view></router-view>
   </div>
 </template>
 
