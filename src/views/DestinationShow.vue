@@ -2,6 +2,7 @@
 import {useRoute} from "vue-router"
 import {onMounted, ref} from "vue";
 import ExperienceCard from "./../components/ExperienceCard.vue";
+import GoBack from "./../components/GoBack.vue";
 import initData from "./../tools.js"
 
 const route = useRoute();
@@ -21,6 +22,7 @@ onMounted(async () => {
   <div>
     <section v-if="destination" class="destination">
       <h1>{{ destination.name }}</h1>
+      <go-back />
       <div class="destination-details">
         <img :src="`/images/${destination.image}`" :alt="destination.name">
         <p>{{ destination.description }}</p>
