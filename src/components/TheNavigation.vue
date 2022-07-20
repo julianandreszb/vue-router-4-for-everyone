@@ -11,7 +11,7 @@ const destinations  = reactive(sourceData.destinations);
     <router-link
         v-for="destination in destinations"
         :key="destination.id"
-        :to="{ name: 'destination.show', params: { id: destination.id, slug: destination.slug} }"
+        :to="{ name: 'destination.show', params: { slug: destination.slug} }"
     >
       {{ destination.name }}
     </router-link>
