@@ -15,6 +15,7 @@ const destinations  = reactive(sourceData.destinations);
     >
       {{ destination.name }}
     </router-link>
+    <router-link :to="{name: 'protected'}">Dashboard</router-link>
   </div>
 </template>
 
@@ -23,5 +24,4 @@ const destinations  = reactive(sourceData.destinations);
   border-bottom: 2px solid white;
   font-weight: bold;
 }
-
 </style>
