@@ -1,19 +1,46 @@
 import {createRouter, createWebHistory} from "vue-router";
-import Home from './../views/Home.vue';
+import Home from "./../views/Home.vue";
+import sourceData from "./../data.json";
 
 const routes = [
     {path: "/", name: "Home", component: Home},
     {
         path: "/destination/:slug",
-        name: "destination.show" ,
+        name: "destination.show",
         component: () => import("./../views/DestinationShow.vue"),
         props: true,
-        children : [
+        beforeEnter(to) {
+            const destinationExists = sourceData.destinations.find(destination => destination.slug === to.params.slug);
+            if (!destinationExists) {
+                return {
+                    name: "NotFound",
+                    params: { pathMatch: to.path.split("/").slice(1)},
+                    query: to.query,
+                    hash: to.hash
+                }
+            }
+        },
+        children: [
             {
                 path: ":experienceSlug",
-                name: "experience.show" ,
+                name: "experience.show",
                 component: () => import("./../views/ExperienceShow.vue"),
                 props: true,
+                beforeEnter(to) {
+                    const destinationExists = sourceData.destinations.find(destination => destination.slug === to.params.slug);
+                    let experienceExists = null;
+                    if (destinationExists) {
+                        experienceExists = destinationExists.experiences.find(experience => experience.slug === to.params.experienceSlug);
+                    }
+                    if(!destinationExists || !experienceExists){
+                        return {
+                            name: "NotFound",
+                            params: { pathMatch: to.path.split("/").slice(1)},
+                            query: to.query,
+                            hash: to.hash
+                        }
+                    }
+                }
             }
         ]
     },
