@@ -5,6 +5,7 @@ import sourceData from "./../data.json";
 const routes = [
     {path: "/", name: "home", component: Home},
     {path: "/login", name: "login", component: () => import("./../views/Login.vue")},
+    {path: "/invoices", name: "invoices", component: () => import("./../views/Invoices.vue"), meta: {requiresAuth: true}},
     {
         path: "/protected",
         name: "protected",
@@ -77,7 +78,7 @@ const router = createRouter({
 });
 router.beforeEach((to) => {
     if (to.meta.requiresAuth && !window.user) {
-        return {name: "login"};
+        return {name: "login", query: {redirect: to.fullPath}};
     }
 });
 export default router;

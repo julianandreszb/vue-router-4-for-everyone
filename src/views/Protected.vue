@@ -14,5 +14,8 @@ const logout = () => {
   <div>
     <h1>Greetings, {{ username }}</h1>
     <button class="btn" @click="logout">Logout</button>
+    <router-link :to="{name: 'invoices'}">
+      <button>Invoices</button>
+    </router-link>
   </div>
 </template>
