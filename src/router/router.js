@@ -4,6 +4,7 @@ import sourceData from "./../data.json";
 
 const routes = [
     {path: "/", name: "home", component: Home},
+    {path: "/home", redirect: {name: "home"}},//redirect
     {path: "/login", name: "login", component: () => import("./../views/Login.vue")},
     {
         path: "/invoices",
