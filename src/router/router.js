@@ -5,11 +5,27 @@ import sourceData from "./../data.json";
 const routes = [
     {path: "/", name: "home", component: Home},
     {path: "/login", name: "login", component: () => import("./../views/Login.vue")},
-    {path: "/invoices", name: "invoices", component: () => import("./../views/Invoices.vue"), meta: {requiresAuth: true}},
+    {
+        path: "/invoices",
+        name: "invoices",
+        // component: () => import("./../views/Invoices.vue"),
+        components: {
+            default: () => import("./../views/Invoices.vue"),
+            LeftSidebar:  () => import("./../components/LeftSidebar.vue"),
+        },
+        meta: {
+            requiresAuth: true
+        }
+    },
     {
         path: "/protected",
         name: "protected",
-        component: () => import("./../views/Protected.vue"),
+        // component: () => import("./../views/Protected.vue"),
+        components: {
+            default: () => import("./../views/Protected.vue"),
+            LeftSidebar: () => import("./../components/LeftSidebar.vue")
+
+        },
         meta: {
             requiresAuth: true
         }

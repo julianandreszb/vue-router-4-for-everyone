@@ -7,15 +7,16 @@ const destinations  = reactive(sourceData.destinations);
 
 <template>
   <div id="nav">
-    <router-link to="/">Vue School Travel App</router-link>
-    <router-link
+    <app-link to="/">Vue School Travel App</app-link>
+    <app-link
         v-for="destination in destinations"
         :key="destination.id"
         :to="{ name: 'destination.show', params: { slug: destination.slug} }"
     >
       {{ destination.name }}
-    </router-link>
-    <router-link :to="{name: 'protected'}">Dashboard</router-link>
+    </app-link>
+    <app-link :to="{name: 'protected'}">Dashboard</app-link>
+    <app-link to="https://vueschool.io" >Vue School</app-link>
   </div>
 </template>
 
